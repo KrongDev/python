@@ -31,11 +31,25 @@ print("나머지:::" + str(e))
 f = divmod(10, 2)
 print("몫과 나머지를 한번에 구하기:::" + str(f))
 
+# 루트
+g = math.sqrt(4)
+print("루트:::" + str(g))
+
 # 제곱
 h = 5 ** 5
 print("제곱:::" + str(h))
 
-# 루트
-g = math.sqrt(4)
-print("루트:::" + str(g))
+# 리스트
+i = ['a', 'b', 'c']
+print("리스트:::" + str(i))
+
+# 리스트 길이 체크 - len()
+print("리스트 길이체크:::" + str(len(i)))
+
+# 리스트 index로 값 출력
+print("리스트 index로 값 출력:::" + i[2])
+
+# 리스트 값 삭제 - remove
+i.remove('a')
+print("리스트 a를 뺸 값 출력:::" + str(i))
 
