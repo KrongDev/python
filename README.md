@@ -17,6 +17,8 @@ for, while, if 와 같은 제어방법과 tip!
 ### [step-4 데이터 타입](./step-4/main.py)
 데이터 타입에 관하여
 ### [step-5 모듈](./step-5/main.py)
-모듈 사용해보기
+모듈 사용해보
+### [step-6 파일](./step-6/main.py)
+파일을 다뤄보자
 
 참고자료 : https://wikidocs.net
