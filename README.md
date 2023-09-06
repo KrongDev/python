@@ -16,5 +16,7 @@ for, while, if 와 같은 제어방법과 tip!
 기본적인 함수 정의 및 함수 사용법
 ### [step-4 데이터 타입](./step-4/main.py)
 데이터 타입에 관하여
+### [step-5 모듈](./step-5/main.py)
+모듈 사용해보기
 
 참고자료 : https://wikidocs.net
