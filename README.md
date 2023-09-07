@@ -25,4 +25,10 @@ for, while, if 와 같은 제어방법과 tip!
 ### [step-8 예외처리](./step-8/main.py)
 예외처리
 
+---
+
+### [알고리즘](./algorithm/main.py)
+
+---
+
 참고자료 : https://wikidocs.net
