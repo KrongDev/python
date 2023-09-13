@@ -1,0 +1,125 @@
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class Main {
+
+    static int N, M;
+    static StringBuilder sb = new StringBuilder();
+
+    static class Node {
+        int data;
+        Node link;
+
+        public Node(int data, Node link) {
+            this.data = data;
+            this.link = link;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // 정점의 개수
+        N = read();
+        // 간선의 개수
+        M = read();
+        //시작 번호
+        int V = read();
+
+        Node[] head = new Node[N + 1];
+
+        for (int i = 0; i < M; i++) {
+            int form = read();
+            int to = read();
+
+            if(head[form] == null) {
+                head[form] = new Node(to, head[form]);
+            } else {
+                for (Node temp = head[form]; temp != null; temp = temp.link) {
+                    if(to < head[form].data) {
+                        head[form] = new Node(to, head[form]);
+                        break;
+                    }
+                    if (temp.link == null) {
+                        temp.link = new Node(to, null);
+                        break;
+                    }
+                    if(to < temp.link.data) {
+                        temp.link = new Node(to, temp.link);
+                        break;
+                    }
+                }
+            }
+
+            if (head[to] == null) {
+                head[to] = new Node(form, head[to]);
+            }
+            else {
+                for (Node temp = head[to]; temp != null; temp = temp.link) {
+                    if (form < head[to].data) {
+                        head[to] = new Node(form, head[to]);
+                        break;
+                    }
+                    if (temp.link == null) {
+                        temp.link = new Node(form, null);
+                        break;
+                    }
+                    if (form < temp.link.data) {
+                        temp.link = new Node(form, temp.link);
+                        break;
+                    }
+                }
+            }
+        }
+
+        dfs(head, V, new boolean[N + 1]);
+        sb.setLength(sb.length() - 1);
+        sb.append("\n");
+        bfs(head, V);
+        sb.setLength(sb.length() - 1);
+
+        System.out.println(sb);
+    }
+
+    private static int read() throws IOException {
+        int c, n = System.in.read() & 15;
+
+        while ((c = System.in.read()) > 32) {
+            n = (n << 1) + (n << 3) + (c & 15);
+        }
+
+        return n;
+    }
+
+    private static void dfs(Node[] head, int cur, boolean[] visit) {
+        visit[cur] = true;
+        sb.append(cur).append(" ");
+
+        for (Node temp = head[cur]; temp != null; temp = temp.link) {
+            if(!visit[temp.data]) {
+                dfs(head, temp.data, visit);
+            }
+        }
+    }
+
+    private static void bfs(Node[] head, int start) {
+        Queue<Integer> queue = new LinkedList<>();
+
+        boolean[] visit = new boolean[N + 1];
+
+        queue.offer(start);
+        visit[start] = true;
+
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+            sb.append(cur).append(" ");
+            visit[cur] = true;
+
+            for (Node temp = head[cur]; temp != null; temp = temp.link) {
+                if (!visit[temp.data]) {
+                    queue.offer(temp.data);
+                    visit[temp.data] = true;
+                }
+            }
+        }
+    }
+}
